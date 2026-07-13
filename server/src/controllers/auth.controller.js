@@ -42,4 +42,58 @@ async function registerController(req,res){
 
 }
 
-module.exports = registerController
+//login controller
+async function loginController(req,res){
+
+    const {username, email, password} = req.body
+
+    const user = await userModel.findOne({
+        $or : [{username} , {email}]
+    }).select("+password")
+
+    if(!user){
+        return res.status(401).json({
+            message : 'Invalid Credentials'
+        })
+    }
+    
+    const hashPassword = await bcrypt.compare(password , user.password)
+
+    if(!hashPassword){
+        return res.status(400).json({
+            message : 'Invalid Credentials'
+        })
+    }
+
+    const token = jwt.sign({
+        id : user._id,
+        username : user.username,
+        email : user.email
+    }, 
+    process.env.JWT_SECRET, 
+    {
+        expiresIn : '1d'
+    })
+
+    res.cookie("token", token)
+
+    res.status(200).json({
+        message : 'Login Successfully',
+        id : user._id,
+        username : user.username,
+        email : user.email
+    })
+
+}
+
+//getMe controller
+async function getMe(req,res){
+
+    const user = await userModel.findById(req.user.id).select("-password")
+
+    res.status(200).json({
+        user
+    })
+}
+
+module.exports = { registerController, loginController, getMe }

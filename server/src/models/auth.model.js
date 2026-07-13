@@ -19,8 +19,10 @@ const users = new mongoose.Schema({
     password : {
          type : String,
          required : [true, "password is required"],
-         trim : true
+         trim : true,
+         select : false
     }
+    
 }, {timestamps : true})
 
 const userModel = mongoose.model("users", users)
