@@ -2,6 +2,7 @@ const express = require('express')
 const {registerController} = require('../controllers/auth.controller')
 const {loginController} = require('../controllers/auth.controller')
 const {getMe} = require('../controllers/auth.controller')
+const {logoutController} = require('../controllers/auth.controller')
 const authUser = require('../middleware/auth.middleware')
 
 const authRouter = express.Router()
@@ -11,5 +12,7 @@ authRouter.post('/register', registerController)
 authRouter.post('/login', loginController)
 
 authRouter.get('/get-me', authUser , getMe)
+
+authRouter.post('/logout', logoutController)
 
 module.exports = authRouter
