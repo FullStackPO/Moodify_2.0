@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken')
 const blacklistModel = require('../models/blacklist.model')
+const redis = require('../config/cache')
 
 const authUser = async(req, res, next) => {
 
@@ -11,11 +12,11 @@ const authUser = async(req, res, next) => {
         })
     }
 
-    const isblackListed = await blacklistModel.findOne({token})
-
+    const isblackListed = await redis.get(token)
+    
     if(isblackListed){
         return res.status(401).json({
-            message : 'Invalid token'
+            message : 'Inappropriate login.'
         })
     }
 
