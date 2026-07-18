@@ -1,43 +1,18 @@
 import React from 'react'
+import '../styles/form.css'
+import FormGroup from '../components/FormGroup'
+import { Link } from 'react-router'
 
 const Register = () => {
   return (
    <div>
         <form>
             <h1>Register</h1>
-
-            <div>
-            <label htmlFor="username">Username</label>
-            <input 
-            type="text" 
-            name="username" 
-            id="username" 
-            placeholder="Enter Username"
-            required/>
-            </div>
-
-            <div>
-            <label htmlFor="email">Email</label>
-            <input 
-            type="text" 
-            name="email" 
-            id="email" 
-            placeholder="Enter email"
-            required/>
-            </div>
-
-            <div>
-            <label htmlFor="password">Password</label>
-            <input 
-            type="text" 
-            name="password" 
-            id="password" 
-            placeholder="Enter password"
-            required/>
-            </div>
-
+            <FormGroup type={"text"} label={"Username"} placeholder={"Enter Username"} />
+            <FormGroup type={"text"} label={"Email"} placeholder={"Enter Email"} />
+            <FormGroup type={"password"} label={"Password"} placeholder={"Enter Password"}/>
             <button>Submit</button>
-
+            <p>Already have account - <Link to='/login'>Login here</Link></p>
         </form>
     </div>
   )
