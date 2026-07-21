@@ -80,18 +80,20 @@ async function loginController(req,res){
     res.cookie("token", token)
 
     res.status(200).json({
-        message : 'Login Successfully',
-        id : user._id,
-        username : user.username,
-        email : user.email
-    })
+    message: "Login Successfully",
+    user: {
+        id: user._id,
+        username: user.username,
+        email: user.email,
+    },
+});
 
 }
 
 //getMe controller
 async function getMe(req,res){
 
-    const user = await userModel.findById(req.user.id).select("-password")
+    const user = await userModel.findById(req.user.id)
 
     res.status(200).json({
         user

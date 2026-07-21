@@ -27,7 +27,7 @@ export async function loginUser({username, email, password}){
 
 export async function getMe(){
     
-    const response = await api.get('get-me')
+    const response = await api.get('/get-me')
 
     return response.data
 
@@ -35,7 +35,7 @@ export async function getMe(){
 
 export async function logoutUser(){
 
-    const response = await api.post('/logout')
+    const response = await api.get('/logout')
 
     return response.data
 
