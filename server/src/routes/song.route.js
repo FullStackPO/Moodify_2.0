@@ -1,9 +1,12 @@
 const express = require('express')
 const upload = require('../middleware/song.middleware')
-const uploadSong = require('../controllers/song.controller')
+const { uploadSong } = require('../controllers/song.controller')
+const { getSong } = require('../controllers/song.controller')
 
 const songRouter = express.Router()
 
 songRouter.post('/', upload.single("song"), uploadSong)
+
+songRouter.get('/', getSong)
 
 module.exports = songRouter
