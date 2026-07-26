@@ -1,19 +1,22 @@
-import React from 'react'
-import { useSong } from '../hooks/useSong'
-import Player from '../components/Player'
-import Expression from '../../expression/components/Expression'
+import Player from "../components/Player";
+import Expression from "../../expression/components/Expression";
+import { useSong } from "../hooks/useSong";
 
+export default function Home() {
+    const { handleGetSong } = useSong();
 
-const Home = () => {
+    const handleExpression = (expression) => {
+        console.log("Detected:", expression);
 
-  const { handleGetSong } = useSong()
+        handleGetSong({
+            mood: expression,
+        });
+    };
 
-  return (
-    <>
-      <Expression onClick={(expression) => { handleGetSong({ mood: expression }) }} />
-      <Player />
-    </>
-  )
+    return (
+        <>
+            <Expression onClick={handleExpression} />
+            <Player />
+        </>
+    );
 }
-
-export default Home

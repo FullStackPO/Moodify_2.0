@@ -25,16 +25,14 @@ export const useAuth = () =>{
     async function handlegetME() {
     try {
         setLoading(true);
-
         const data = await getMe();
-        console.log(data);
-
         setUser(data.user);
+
     } catch (error) {
         console.log(error.response?.status);
         console.log(error.response?.data);
-
         setUser(null);
+        
     } finally {
         setLoading(false);
     }

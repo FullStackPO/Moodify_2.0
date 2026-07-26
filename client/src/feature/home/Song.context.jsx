@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export const songContext = createContext()
 
-export const songProvider = ({children}) => {
+export const SongProvider = ({children}) => {
 
     const[song, setSong] = useState({ 
         "url": "https://ik.imagekit.io/tt0fjz3qv/moodify/Khaamiyan_qJm4KuM1P.mp3",
@@ -15,7 +15,7 @@ export const songProvider = ({children}) => {
     const[loading, setLoading] = useState(false)
 
     return (
-    <songContext.Provider value={{song, setSong, loading, setLoading}}>
+    <songContext.Provider value={{ song, setSong, loading, setLoading }}>
         {children}
     </songContext.Provider>
     )

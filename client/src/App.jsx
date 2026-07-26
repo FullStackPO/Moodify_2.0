@@ -4,14 +4,14 @@ import Expression from './feature/expression/components/Expression'
 import { RouterProvider } from 'react-router'
 import { router } from './App.route'
 import { AuthProvider } from './feature/auth/Auth.context'
-import { songProvider } from './feature/home/Song.context'
+import { SongProvider } from './feature/home/Song.context'
 
 const App = () => {
   return (
     <AuthProvider>
-      <songProvider>
+      <SongProvider>
         <RouterProvider router={router} />
-      </songProvider>
+      </SongProvider>
     </AuthProvider>
   )
 }
