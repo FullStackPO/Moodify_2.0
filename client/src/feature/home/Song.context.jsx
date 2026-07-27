@@ -5,12 +5,7 @@ export const songContext = createContext()
 
 export const SongProvider = ({children}) => {
 
-    const[song, setSong] = useState({ 
-        "url": "https://ik.imagekit.io/tt0fjz3qv/moodify/Khaamiyan_qJm4KuM1P.mp3",
-        "posterUrl": "https://ik.imagekit.io/tt0fjz3qv/moodify/Khaamiyan_4qaKqPeh1.jpeg",
-        "title": "Khaamiyan",
-        "mood": "sad"
-    })
+    const[song, setSong] = useState(null)
 
     const[loading, setLoading] = useState(false)
 

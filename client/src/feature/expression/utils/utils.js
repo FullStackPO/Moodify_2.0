@@ -94,7 +94,7 @@ export const detect = ({
         expression = "happy";
     } else if (jawOpen > 0.35 && browUp > 0.35) {
         expression = "surprised";
-    } else if (frownLeft > 0.3 && frownRight > 0.3) {
+    } else if (frownLeft > 0.001 && frownRight > 0.00) {
         expression = "sad";
     }
 

@@ -4,6 +4,7 @@ import FormGroup from '../components/FormGroup'
 import { Link } from 'react-router'
 import { useAuth } from '../hooks/useAuth'
 import { useNavigate } from 'react-router'
+import '../styles/auth.css'
 
 const Login = () => {
 
@@ -21,7 +22,7 @@ const Login = () => {
   }
 
   return (
-    <div>
+    <div className='auth-page'>
         <form onSubmit={submitHandler}>
             <h1>Login</h1>
 
