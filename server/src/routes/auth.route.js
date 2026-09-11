@@ -13,6 +13,6 @@ authRouter.post('/login', loginController)
 
 authRouter.get('/get-me', authUser , getMe)
 
-authRouter.get('/logout', logoutController)
+authRouter.get('/logout', authUser, logoutController)
 
 module.exports = authRouter
